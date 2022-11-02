@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: lightgray;
+}
+
+header{
+    height: 80px;
+    background-color: antiquewhite;
+    position: relative;
+}
+
+#logo{
+    position: absolute;
+    left: 20px;
+    top: 30%;
+    width: 20vh;
+}
+
+.container{
+    position: relative;
+}
+
+.spices{
+    filter: brightness(65%);
+}
+
+h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 40px;
+}
+
+button{
+    background-color: rgb(255, 208, 0);
+    border-radius: 30px;
+    border: 2px solid rgb(218, 105, 0);
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30vh;
+    height: 6vh;
+    font-size: 30px;
+    color: rgb(255, 123, 0);
+}
+
+.containergrey{
+    height: 50vh;
+}
+
+footer{
+    background-color: rgb(94, 94, 94);
+    height: 80px;
+}
+
+#menu{
+    height: 5vh;
+    position: absolute;
+    right: 20px;
+    top: 30%;
+}
