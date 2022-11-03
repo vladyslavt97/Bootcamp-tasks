@@ -29,6 +29,7 @@ function myFunction(num){
         for(let num = 0; num > 1000000; num * 10);
     }
 }
+
 myFunction(10/"abc");
 
 
