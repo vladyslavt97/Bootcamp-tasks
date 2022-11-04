@@ -1,0 +1,97 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    text-align: center;
+    padding: 10px;
+    background-color: #01937C;
+}
+
+#quotes-container {
+    width: 90%;
+    margin: 0 5%;
+    text-align: center;
+}
+
+.quote {
+    width: 350px;
+    min-height: 200px;
+    display: inline-block;
+    margin: 10px 15px;
+    margin-right: 0px;
+    border: 3px solid #FAF1E6;
+    border-radius: 12px;
+    background-color: #01937C;
+    overflow: hidden;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0px;
+    color: #FAF1E6;
+    font-size: 42px;
+}
+
+h2, p {
+    text-align: center;
+    padding: 10px 15px;
+    margin: 10px 0px;
+    border-radius: 12px;
+    background-color: transparent;
+}
+
+p {
+    color: #FAF1E6;
+    font-size: small;
+}
+
+h2 {
+    color: #FFC074;
+    font-weight: 500;
+    font-style: italic;
+}
+
+@media screen and (max-width: 1024px){
+    body{
+        background-color: rgb(162, 0, 198);
+    }
+    h2{
+        color: rgb(0, 255, 119);
+    }
+    .quote{
+        border: 15px double whitesmoke
+    }
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        background-color: rgb(205, 243, 38);
+    }
+}
+
+@media (prefers-color-scheme: dark){
+    body{
+        background-color: #FFC074;
+    }
+    .quote{
+        border: 5px inset blue;
+        background-color: bisque;
+    }
+}
+
+@media screen and (max-width: 800px) and (prefers-color-scheme: dark){
+    body{
+        background-color: black;
+    }
+}
+
+@media print{
+    *{
+        background-color: white;
+        color: black;
+    }
+}
