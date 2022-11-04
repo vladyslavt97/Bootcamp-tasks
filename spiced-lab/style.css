@@ -1,15 +1,23 @@
 *{
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+    
 }
 
 body{
     background-color: lightgray;
+    /* max-height: 100%; */
 }
 
 header{
-    height: 80px;
-    background-color: antiquewhite;
+    height: 11vh;
+    background-color: rgb(255, 255, 255);
     position: relative;
 }
 
@@ -30,11 +38,13 @@ header{
 
 h1{
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
     color: white;
-    font-size: 40px;
+    font-size: 5vw;
+    margin: 0;
 }
 
 button{
@@ -42,27 +52,54 @@ button{
     border-radius: 30px;
     border: 2px solid rgb(218, 105, 0);
     position: absolute;
-    top: 60%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 30vh;
-    height: 6vh;
-    font-size: 30px;
+    width: 20vw;
+    height: 6vw;
+    font-size: 3vw;
     color: rgb(255, 123, 0);
 }
 
 .containergrey{
-    height: 50vh;
+    height: 52vh;
 }
 
 footer{
     background-color: rgb(94, 94, 94);
-    height: 80px;
+    height: 40px;
+    width: 100%;
+    z-index: 99;
+    bottom: 0;
 }
 
 #menu{
-    height: 5vh;
+    height: 6vh;
     position: absolute;
     right: 20px;
     top: 30%;
+}
+
+.small-pictures{
+    width: 5vw;
+}
+
+#footer-text{
+    margin: 5px;
+    padding: 5px;
+}
+
+.content {
+    margin: 10px 20px 10px 20px;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 768px){
+    .content{
+        margin: 5% 25%;
+    }
+    .containergrey{
+        height: 50vh;
+    }
 }
