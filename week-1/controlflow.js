@@ -38,9 +38,9 @@ var a = {
 
 var b = {};
 
-for (var name in a){
-    var value = a[name];
-    b[value] = name;
+for (let name in a){
+    let value = a[name];
+    b[value] = name; //why crossed out and why this line
 }
 console.log(b);
 

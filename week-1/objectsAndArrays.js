@@ -1,17 +1,17 @@
 //task 1
-function each(param1, param2){
-    if (typeof param1 === "object"){ // is it arraz or object
-        if (Array.isArray(param1)){ // is it array
+function each(items, callback){
+    if (typeof items === "object"){ // is it array or object
+        if (Array.isArray(items)){ // is it array
             console.log("it is an array");
 
-            for(let i=0; i < param1.length; i++){
-                param2(param1[i], i);
+            for(let i=0; i < items.length; i++){
+                callback(items[i], i);
             }
 
         } else { // then it is an object
             console.log("is an Object");
-            for(const property in param1){
-                param2(param1[property], property);
+            for(const property in items){
+                callback(items[property], property);
             }
         }
     }else{
@@ -19,23 +19,11 @@ function each(param1, param2){
     }
 }
 function myFunc(l, y){
-    console.log(l,y);
+    console.log("output", l,y);
 }
 
 each(['a', 'b'], myFunc);
 each({a: 1, b: 2}, myFunc);
-
-
-
-// each({a: 1, b: 2}, function(val, name) {
-//        console.log('The value of ' + name + ' is ' + val);
-//    });
-
-// each(['a', 'b'], function(val, idx) {
-//        console.log('The value of item ' + idx + ' is ' + val);
-//    });
-
-   
 
 
 
@@ -46,16 +34,34 @@ console.log(originalArray); // [1, 2, 3]
 const reversedArray = originalArray.reverse();
 console.log(reversedArray); // [3, 2, 1]
 
-////save a copy with slice
-// const originalArray = [1, 2, 3];
-// const helloWorld = originalArray.slice();
-// const reversedArray = helloWorld.reverse();
+//task 2 - save a copy with slice
+const originalArray1 = [1, 2, 3];
+const nonReversed = originalArray1.slice();
+const reversedArray1 = nonReversed.reverse();
 
-// console.log(originalArray) // [1, 2, 3]
-// console.log(reversedArray) // [3, 2, 1]
+console.log(originalArray1); // [1, 2, 3]
+console.log(reversedArray1); // [3, 2, 1]
+
+// task 2 - with a function method
+const originalArray2 = [1, 2, 3];
+function task(){
+    const nonReversed2 = originalArray2.slice();
+    const reversedArray2 = originalArray2.reverse();
+    console.log(nonReversed2);
+    console.log(reversedArray2); 
+}
+task();
 
 
 //task 3 
 const arr = [1, 2, -1, -90, 10];
 const lessThanZero = arr.filter(getLessThanZero => getLessThanZero < 0);
-console.log(lessThanZero);// [-1, -90]
+console.log(lessThanZero);
+
+
+//task 3 with a function
+function memeArr(){
+    const lessThanZero = arr.filter(getLessThanZero => getLessThanZero < 0);
+    console.log(lessThanZero);
+}
+memeArr();

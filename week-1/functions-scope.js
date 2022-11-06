@@ -8,7 +8,7 @@ function sum(n) {
 }
 console.log(sum(24, 45, 45));
 
-
+ 
 //2nd exercise
 setTimeout(function waitThenRun() {
     console.log('Hello!'); 
@@ -39,9 +39,17 @@ myFunction(10/"abc");
 
 
 //bonus
-// function sumOfNumbers(){;
-//  var totaler = getTotaler();
-//  totaler(1); //1
-//  totaler(2); //3
-//  totaler(5); //8
-// };
+let myTotaler = function() {
+    let sum = 0;
+    return function(num) {
+        sum += num;
+        return sum;
+    };
+};
+
+let totaler = myTotaler();
+
+
+console.log(totaler(1)); //1
+console.log(totaler(2)); //3
+console.log(totaler(5)); //8
