@@ -13,7 +13,3 @@ const person = {
 
 console.log('Hi! My address is ' + person.adress.street + " "
 + person.adress.number + ", " + person.adress.city);
-
-
-//
-
