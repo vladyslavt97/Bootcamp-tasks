@@ -1,0 +1,26 @@
+/* task 2 */
+/* Make a page that has a <textarea>element on it. */
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+body {
+    color: rgb(44, 0, 97);
+    background-color: aquamarine;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+textarea{
+    width: 50vw;
+    height: 30vw;
+    font-size: 2rem;
+    color: rgb(255, 0, 0);
+    padding: 15px;
+    background-color: black;
+}

@@ -1,0 +1,28 @@
+/* task 4 */
+/* Make a page that has on it an element that is 200px by 200px in size and has a solid background color. Nest within that element another element that is 50px by 50px in size and has a different solid background color. */
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+#element{
+    border: 3px solid black;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    background-color: brown;
+}
+
+#smaller-element{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 3px solid blue;
+    background-color: blanchedalmond;
+}

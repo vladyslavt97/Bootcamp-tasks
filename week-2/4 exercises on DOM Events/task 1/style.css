@@ -1,0 +1,22 @@
+/* task 1 */
+/* Make a page that has on it an element that is 100px by 100px in size,
+has absolute positioning, and has a solid background color. */
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+.element {
+    border: 3px solid black;
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-color: brown;
+    transform: translate(-50px, -50px);
+}
+
