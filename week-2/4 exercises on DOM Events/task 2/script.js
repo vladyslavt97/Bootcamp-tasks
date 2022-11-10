@@ -21,6 +21,15 @@ textArea.addEventListener('keydown', function (event) { //add event listener to 
     textArea.value = longText.substring(0, index);
 }); 
 
+////Solution 2
+// let count = 0;
+// let textArea = document.querySelector('textarea');// 1. get textarea element with querySelector for example
+// textArea.addEventListener('keydown', function (event) { //add event listener to textarea element with 'keydown'
+//     event.preventDefault();
+//     const xyz = longText.split("");
+//     textArea.value += xyz[count];
+//     count++;
+// }); 
 
 // Steps:
 // 1. get textarea element with querySelector for example +
@@ -28,62 +37,3 @@ textArea.addEventListener('keydown', function (event) { //add event listener to 
 // 3. check how many chars our textarea has with `textarea.textContent.length`; -+
 // 4. const newText = longText.splice(0, length);
 // 5. textarea.textContent = newText;
-// const textArea = document.querySelector('textarea');// 1. get textarea element with querySelector for example
-// textArea.addEventListener('keydown', function (char) { //add event listener to textarea element with 'keydown'
-//     // for(let i=0; i<longText.length; i++);
-//     const char = textarea.textContent.length;
-//     const newText = longText.splice(0, length);
-//     textArea.textContent = newText;
-// }); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const deliveredAddress = document.querySelector('textarea');
-// const actualValue = deliveredAddress.value;
-// console.log(actualValue);
-// // function onClick(){
-// //     document.addEventListener("keydown", function () {
-// //         for(let i = 0; i < actualValue.length; i++){
-// //             actualValue[i].style.color = 'black';
-// //         }
-// //     });
-// // }
-// // onClick();
-
-
-// //
-// function onClick(){
-//     const arrOfStrings = actualValue.split("");
-//     for(let i = 0; i <= arrOfStrings.length; i++){
-//         arrOfStrings[i].style.color = 'black';
-//     }
-// }
-
-// document.addEventListener("keydown", onClick());

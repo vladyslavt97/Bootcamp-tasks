@@ -50,10 +50,7 @@ let widthOfHeadlines2 = headlines2.offsetWidth;
 let currentRightValue = widthOfHeadlines2; 
 let id2;
 function moveRight() { 
-    //const cutPoint =
-    headlines2.offsetWidth * -1
-    + ticker2.offsetWidth
-    + lastLink.offsetWidth;
+    const cutPoint = (headlines2.offsetWidth * -1) + ticker2.offsetWidth + lastLink.offsetWidth;
     if (headlines2.offsetRight + lastLink.offsetWidth < 0){
         headlines2.removeChild(lastLink); 
         headlines2.prepend(lastLink); 
