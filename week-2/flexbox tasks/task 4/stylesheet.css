@@ -1,0 +1,56 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-wrap: wrap;
+}
+#squares{
+    display: flex;
+
+}
+
+.square1, .square2, .square3, .square4{
+    height: 300px;
+    width: 300px;
+    display: flex;
+    margin: 5px;
+}
+
+.smallsq1, .smallsq2, .smallsq3, .smallsq4{
+    height: 150px;
+    width: 150px;
+}
+
+.square1 {
+    background-color: grey;
+    flex-direction: row-reverse;
+}
+.smallsq1{
+    background-color: orange;
+    
+}
+.square2 {
+    background-color: rgb(0, 0, 0);
+    flex-direction: row-reverse;
+    align-items: flex-end;
+}
+.smallsq2{
+    background-color: rgb(251, 255, 0);
+}
+.square3 {
+    background-color: rgb(0, 19, 192);
+    flex-direction: column-reverse;
+}
+.smallsq3{
+    background-color: rgb(16, 94, 0);
+}
+.square4 {
+    background-color: rgb(117, 0, 78);
+}
+.smallsq4{
+    background-color: rgb(255, 134, 249);
+}

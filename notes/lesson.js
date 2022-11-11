@@ -14,7 +14,6 @@
 // console.log('Hi! My address is ' + person.adress.street + " "
 // + person.adress.number + ", " + person.adress.city);
 
-
 // // 08.11.12
 // //Functions and functions instances
 
@@ -29,7 +28,6 @@
 //     return a+b;
 // }
 
-
 // //or different syntax
 
 // const sum = function (a,b){
@@ -41,13 +39,11 @@
 //     console.log('delay log');
 // },1000);
 
-
 // const log = () => {
 //     console.log('delay log');
 // }
 
 // setTimeout(log, 1000);
-
 
 // //constructor creates an instance/object of a function and its properties
 
@@ -61,16 +57,13 @@
 // const logger = new CustomLogger();
 // logger.log('Hi there'); //'2022-11-08 Hi there';
 
-
-
 //
-function largest(xs){
-    let xsNew = [];
-    for (let i = 0; i <= xs.length; i++);//loop over the whole array
-    let highestNum = Math.max(xs);
-    console.log(highestNum);
-    //do some checks and assignements for the current number and the number saved in the variables
+function largest(n, xs) {
+    let myArr = xs.sort((a, b) => {
+        return b - a;
+    });
+    console.log(myArr);
+    let subtractedEl = myArr.slice(0, n);
+    return subtractedEl;
 }
-
-//return a new array of the highest number 6,7
-largest([7,6,5,4,3,2,1]);
+console.log(largest(2, [7, 6, 5, 4, 3, 2, 1]));
