@@ -57,13 +57,30 @@
 // const logger = new CustomLogger();
 // logger.log('Hi there'); //'2022-11-08 Hi there';
 
-//
-function largest(n, xs) {
-    let myArr = xs.sort((a, b) => {
-        return b - a;
-    });
-    console.log(myArr);
-    let subtractedEl = myArr.slice(0, n);
-    return subtractedEl;
-}
-console.log(largest(2, [7, 6, 5, 4, 3, 2, 1]));
+// //
+// function largest(n, xs) {
+//     let myArr = xs.sort((a, b) => {
+//         return b - a;
+//     });
+//     console.log(myArr);
+//     let subtractedEl = myArr.slice(0, n);
+//     return subtractedEl;
+// }
+// console.log(largest(2, [7, 6, 5, 4, 3, 2, 1]));
+
+
+
+/////////////ask!!!
+// function squareDigits(num) {
+//     let numToStr = num.toString();
+//     let result = "";
+//     for (let i = 0; i <= numToStr.length; i++) {
+//         result += numToStr[i] ** 2;
+//         // console.log(result)
+//         // let toString = result.toString();
+//         let parsedIn = parseInt(result);
+//         // console.log(parsed);
+//     } return parsedIn;
+// }
+
+// console.log(squareDigits(83));
