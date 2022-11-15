@@ -1,0 +1,55 @@
+*{box-sizing: border-box; margin: 0; padding: 0;}
+
+#container {
+    position: relative;
+    width: 600px;
+    height: 380px;
+    border: 5px solid blueviolet;
+    overflow: hidden;
+    margin-left: 5%;
+    user-select: none;
+}
+
+#container>* {
+    position: absolute;
+}
+
+
+#slider{
+    height: 100%;
+    width: 20px;
+    background-color: black;
+    position: absolute;
+    cursor: pointer;
+    right: 0;
+}
+
+img{
+    width: 600px;
+}
+
+#background{
+    width: 600px;
+    height: 100%;
+    object-fit: cover;
+}
+
+#background>img{
+    position: relative;
+    top: -180px;
+}
+#foreground{
+    width: 600px;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+#slider-line{
+    position: absolute;
+    background-color: grey;
+    width: 2px;
+    height: 100px;
+    top: 38%;
+    left: 45%;
+}
