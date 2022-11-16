@@ -62,3 +62,4 @@ theCross.on("click", function() {
     popUpDiv.addClass('hidden');
     backdrop.removeClass("hidden");
 });
+
