@@ -46,35 +46,19 @@ navSlide();
 
 
 
-
-// $(document).ready(function(){
-//     const tryJ = setTimeout(function(){
-//         $('#backdrop').css({
-//             opacity: 1
-//         });
-//         $('body').html('<div><p>NO</p></div>')
-//         ("Using setTimeout in jQuery");}, 2000);
-//     clearTimeout(tryJ);
-// });
-
-// setTimeout(function(){
-//     $('.popup').show();
-// }, 5000);
-
+//////////////////////////////////
 const backdrop = $("#backdrop");
 const theCross = $('h3');
-const popupdiv = $('.popupdiv');
-// theCross.on('click', () => {
-//     popupdiv.classList.add('hidden');
-//     backdrop.classList.remove("hidden");
-// });
+const popUpDiv = $('.popupdiv');
 
-const tryJ = setTimeout(function(){
-    $('.popup').show();
-    theCross.on('click', () => {
-        popupdiv.addClass('hidden');
-        backdrop.removeClass("hidden");
-    });
+setTimeout(function(){
+    $('.popupdiv').show();
+    popUpDiv.removeClass('hidden');
+    backdrop.addClass("hidden");
+    theCross.removeClass("hidden");
 }, 2000);
 
-clearTimeout(tryJ);
+theCross.on("click", function() {
+    popUpDiv.addClass('hidden');
+    backdrop.removeClass("hidden");
+});

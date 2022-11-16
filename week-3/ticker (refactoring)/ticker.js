@@ -7,8 +7,8 @@ let currentLeftValueJ = widthOfHeadlinesJ;
 let idJ;
 function moveLeftJ() { 
     if (headlinesJ.offset() + firstLinkJ.outerWidth() < 0){
-        headlinesJ.empty(firstLinkJ); 
-        headlinesJ.appendTo(firstLinkJ);
+        // headlinesJ.empty(firstLinkJ); 
+        headlinesJ.append(firstLinkJ);
         firstLinkJ = $('.a');
         currentLeftValueJ = 0; 
         headlinesJ.css({
@@ -16,8 +16,6 @@ function moveLeftJ() {
         });
     } 
     idJ = requestAnimationFrame(() => { 
- 
-        console.log(currentLeftValueJ);
         currentLeftValueJ -= 5; 
         headlinesJ.css({
             left: currentLeftValueJ + 'px'
