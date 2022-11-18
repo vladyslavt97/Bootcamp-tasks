@@ -1,6 +1,3 @@
-export const message = "How you doing?";
-
-
 export const arrayOfCountries = [
     "Afghanistan",
     "Albania",

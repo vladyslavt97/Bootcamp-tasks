@@ -1,5 +1,4 @@
-import {message, arrayOfCountries} from "./arr.js";
-console.log(message);
+import {arrayOfCountries} from "./arr.js";
 
 let index = -1;
 var input = $("input");
@@ -23,17 +22,20 @@ input
     .on("keydown", function (e) { 
         if(e.keyCode === 40){
             console.log(e.keyCode);
-            // results.children().eq(index).removeAttr("background-color", "red"); //check how it removes styling
+            results.children().eq(index).css( "background-color", "white" ).css("width", "150px").css("border-radius", "5px");
             index++;
-            results.children().eq(index).css( "background-color", "red" ).css("width", "150px").css("border-radius", "5px").css("opacity", "0.5");
+            results.children().eq(index).css( "background-color", "grey" ).css("width", "150px").css("border-radius", "5px").focus();
         }else if(e.keyCode === 38){
             console.log(e.keyCode);
+            results.children().eq(index-1).css( "background-color", "grey" ).css("width", "150px").css("border-radius", "5px");
             index--;
-            results.children().eq(index).css( "background-color", "blue" );
-        // }else if(e.keyCode === 13){ //Enter focused result to the input field.
-        //     .select();
+            results.children().eq(index-3).css( "background-color", "white" );
+        }else if(e.keyCode === 13){ //Enter focused result to the input field.
+            console.log(e.keyCode);
+            results.select();
         }
     });
+
 
 function findResults(str) {
     const filteredCountries = arrayOfCountries.filter(country => {

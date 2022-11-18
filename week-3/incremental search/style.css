@@ -1,4 +1,16 @@
 #results>div:hover{
-    background-color: aqua;
+    background-color: grey;
     width: 150px;
+    border-radius: 5px;
+    border: 1px solid rgb(16, 0, 86);
 }
+
+/* #result>div:first-of-type+div.hidden{
+    background-color: grey;
+    width: 150px;
+} */
+
+/* #result>div:first-of-type+div.previous{
+    background-color: grey;
+    width: 150px;
+} */
