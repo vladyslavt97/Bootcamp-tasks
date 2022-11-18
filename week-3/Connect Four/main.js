@@ -29,9 +29,9 @@ for (let i=0; i < columns.length; i++){
         const result = fillColumn(i);
         const successful = result.success;
         const filledIdx = result.filledIdx;
-        if (result === true){//2. check if filling a column was successful and //if it was successful:
+        if (successful){//2. check if filling a column was successful and //if it was successful:
             const hasColumnWin = checkColumnWin(i);
-            const hasRowWin = checkForRowWin();
+            const hasRowWin = checkForRowWin(filledIdx);
             const hasDiagonalWin = checkForDiagonalWin();
             // const hasDraw = checkForDraw();
             // if (hasColumnWin || hasRowWin || hasDiagonalWin){
@@ -50,6 +50,7 @@ for (let i=0; i < columns.length; i++){
         }else{ //if it was not successful:
             return; //we do nothing
         }   
+        
     });
     //return {success: false} after for loop
 }
@@ -62,9 +63,9 @@ function fillColumn(columnIndex){
         if (holes[i] === 0){
             holes[i] = playerToMove;
             holesElements[i].classList.add('player' + playerToMove);
-            return true;//{ success: true}
+            return { success: true, filledIdx: i};
         }
-    } return false;
+    } return { success: false};
 }
 
 function checkColumnWin(columnIdx){
@@ -91,14 +92,13 @@ function checkColumnWin(columnIdx){
 }
 
 function checkForRowWin(filledIdx){
-    const startIdx = filledIdx%numOfColumns;
-    const endIdx = numOfRows + numOfColumns; 
+    const startIdx = filledIdx%numOfRows;
+    const endIdx = numOfRows * numOfColumns; 
     let countChips = 0;
     let lastChip;
     for (let i=startIdx; i < endIdx; i+=numOfRows){
         if(holes[i] === 0){
             countChips = 0;
-            return false;
         } else if (holes[i] !== lastChip){
             lastChip = holes[i];
             countChips = 1; 
