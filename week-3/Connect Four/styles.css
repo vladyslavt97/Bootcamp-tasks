@@ -1,5 +1,13 @@
 body {
     margin: 0;
+    overflow-y: hidden;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    z-index: -999;
+    position: absolute;
 }
 
 .container {
@@ -7,15 +15,15 @@ body {
     width: 100%;
     height: 100vh;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
+    border-radius: 10px;
 }
 
 #board {
     display: flex;
     margin-bottom: 20px;
     /* transform: rotate(180deg); */
-    border-radius: 10px;
 }
 
 .column {
@@ -31,14 +39,14 @@ body {
     width: 80px;
     overflow: hidden;
     position: relative;
-    border: 20px solid blue;
+    border: 30px solid rgb(219, 162, 122);
 }
 
 .hole {
     height: 80px;
     width: 80px;
     left: -20px;
-    border: 20px solid blue;
+    border: 20px solid rgb(219, 162, 122);
     top: -20px;
     border-radius: 50%;
     position: relative;
@@ -53,5 +61,75 @@ body {
 }
 
 .column:hover{
-    background-color: rgb(0, 164, 164);
+    background-color: #60fcfc6c;
+    /* opacity: 0.5; */
+}
+
+.slot.row01{
+    border-top-left-radius: 30px;
+}
+
+.slot.row51 {
+    border-bottom-left-radius: 30px;
+}
+
+.slot.row02 {
+    border-top-right-radius: 30px;
+}
+
+.slot.row52 {
+    border-bottom-right-radius: 30px;
+}
+
+.backdrop {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    z-index: -999;
+    opacity: 0;
+    transition: all 2s ease;
+
+}
+
+.backdrop.hidden {
+    opacity: 0.7;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow-y: hidden;
+    z-index: 900;
+}
+
+.gameresult{
+    width: 500px;
+    height: 200px;
+    border-radius: 30px;
+    border: 2px solid brown;
+    background-color: rgb(255, 220, 105);
+    color: black;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -998;
+    font-size: 2rem;
+    opacity: 0;
+}
+.gameresulttext{
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.gameresult.hidden{
+    z-index: 999;
+    opacity: 1;
+}
+
+.restartbtn{
+    font-size: 1.5rem;
+    margin-left: 50%;
+    margin-top: 10px;
+    transform: translateX(-50%);
 }

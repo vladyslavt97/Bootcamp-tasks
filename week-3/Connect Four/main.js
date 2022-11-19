@@ -1,7 +1,13 @@
 const columns = document.getElementsByClassName('column');
 const slot = document.querySelectorAll('.slot');
 const row = document.querySelectorAll('.row');
-
+const backdrop = document.querySelector('.backdrop');
+const gameResult = document.querySelector('.gameresult');
+const restartBtn = document.querySelector('.restartbtn');
+const gameresulttext = document.querySelector('.gameresulttext');
+restartBtn.addEventListener('click', ()=> {
+    window.location.reload(false);
+});
 // 1. DEFINE GLOBAL VARIABLES
 let holesElements = Array.from(document.querySelectorAll('.hole'));
 let columnElements = Array.from(document.querySelectorAll('.column'));
@@ -18,7 +24,8 @@ let holes = [
 let playerToMove = 1; //... more global variables
 let numOfColumns = 7;
 let numOfRows = 6;
-let gameResult;
+// let gameResult;
+let filledIdx;
 
 // 2. CREATE MULTIPLE EVENT LISTENER
 for (let i=0; i < columns.length; i++){
@@ -33,7 +40,7 @@ for (let i=0; i < columns.length; i++){
             const hasColumnWin = checkColumnWin(i);
             const hasRowWin = checkForRowWin(filledIdx);
             const hasDiagonalWin = checkForDiagonalWin();
-            // const hasDraw = checkForDraw();
+            const hasDraw = checkForDraw();
             // if (hasColumnWin || hasRowWin || hasDiagonalWin){
             //     //write game result variable
             //     //use at least allert function to show winner
@@ -84,6 +91,9 @@ function checkColumnWin(columnIdx){
         }
         if (countChips === 4){
             console.log('Player ', holes[i], ' win');
+            backdrop.classList.add('hidden');
+            gameResult.classList.add('hidden');
+            gameresulttext.innerHTML = 'The winner is player number: ' + holes[i];
             return true;
             
         }       
@@ -107,6 +117,9 @@ function checkForRowWin(filledIdx){
         }
         if (countChips === 4){ 
             console.log('Player ', holes[i], 'win');
+            backdrop.classList.add('hidden');
+            gameResult.classList.add('hidden');
+            gameresulttext.innerHTML = 'The winner is player number: ' + holes[i];
             return true;
         }       
     }
@@ -121,6 +134,9 @@ function checkForDiagonalWin() {
         });
         if (hasWin === true){
             console.log('Player ', holes[i], 'win');
+            backdrop.classList.add('hidden');
+            gameResult.classList.add('hidden');
+            gameresulttext.innerHTML = 'The winner is player number: ' + holes[i];
             return true;
         }
     }
@@ -129,13 +145,19 @@ function checkForDiagonalWin() {
 
 
 function checkForDraw(){
-    for (let i=0; i < holes.length; i++){ // loop through whole holes array 
-        if (holes[i] = 0){// check for zero and return false if zero was found
-            return false;
-        }
+    if (holes.includes(0)){// check for zero and return false if zero was found
+        console.log('not a draw');
+
+        return false;
+    }else{
+        console.log('draw');
+        backdrop.classList.add('hidden');
+        gameResult.classList.add('hidden');
+        gameresulttext.innerHTML = 'Impossible, but its a DRAW';
         return true;    
     }
 }
+
 
 const winIndices = [
     // starting from first row; second column

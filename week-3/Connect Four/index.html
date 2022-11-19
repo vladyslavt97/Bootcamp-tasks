@@ -5,17 +5,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Connect Four</title>
     <script defer src="main.js"></script>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="data:;base64,iVBORwOKGO=" />
 </head>
 
 <body>
+    <div class="backdrop"></div>
+    <div class="gameresult">
+        <p class="gameresulttext">The winner is player number: _ </p>
+        <button class="restartbtn">Restart</button>
+    </div>
+    <img src="./brown-wooden-flooring1.jpg" alt="back">
     <div class="container">
         <div id="board">
             <div class="column">
-                <div class="slot row0">
+                <div class="slot row01">
                     <div class="hole"></div>
                 </div>
                 <div class="slot row1">
@@ -30,7 +36,7 @@
                 <div class="slot row4">
                     <div class="hole"></div>
                 </div>
-                <div class="slot row5">
+                <div class="slot row51">
                     <div class="hole"></div>
                 </div>
             </div>
@@ -135,7 +141,7 @@
                 </div>
             </div>
             <div class="column">
-                <div class="slot row0">
+                <div class="slot row02">
                     <div class="hole"></div>
                 </div>
                 <div class="slot row1">
@@ -150,7 +156,7 @@
                 <div class="slot row4">
                     <div class="hole"></div>
                 </div>
-                <div class="slot row5">
+                <div class="slot row52">
                     <div class="hole"></div>
                 </div>
             </div>
