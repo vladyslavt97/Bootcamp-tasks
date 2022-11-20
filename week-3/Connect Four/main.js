@@ -1,13 +1,114 @@
 const columns = document.getElementsByClassName('column');
-const slot = document.querySelectorAll('.slot');
-const row = document.querySelectorAll('.row');
 const backdrop = document.querySelector('.backdrop');
 const gameResult = document.querySelector('.gameresult');
 const restartBtn = document.querySelector('.restartbtn');
 const gameresulttext = document.querySelector('.gameresulttext');
+///
+
+
+
+//audio
+const myAudio = document.querySelector('#audio');
+const clickAudio = document.querySelector('#audioclick');
+
+//restart btn
 restartBtn.addEventListener('click', ()=> {
-    window.location.reload(false);
+    clickAudio.play();
+    document.location.reload(false);
 });
+
+
+///firststart window
+
+const startthegame = document.querySelector('.startthegame');
+const startthegamebtn = document.querySelector('.startthegamebtn');
+
+
+let player1 = {
+    index: 1,
+    name: ''
+};
+
+let player2 = {
+    index: 2,
+    name: ''
+};
+
+//localStorage startpage
+const isStart = localStorage.getItem('isStart');
+
+startthegamebtn.addEventListener('click', ()=> {
+    clickAudio.play();
+    startthegame.classList.add('hidden');
+    startthegamebtn.classList.add('hidden');
+    localStorage.setItem('isStart', 'true');
+    player1.name = document.getElementById('input1').value || player1.name;
+    player2.name = document.getElementById('input2').value || player2.name;
+    playerToMove = player1;
+});
+
+if(isStart === 'true'){
+    startthegame.classList.add('hidden');
+    startthegamebtn.classList.add('hidden');
+} else if (!document.getElementById('input1').value && !document.getElementById('input2').value) {
+    document.getElementById('input1').value = player1.name;
+    document.getElementById('input2').value = player2.name;
+}
+
+//
+//names
+const startBtn = document.getElementById('str');
+const input1Data = document.getElementById('input1');
+input1Data.value = localStorage.getItem("myInput");
+
+startBtn.addEventListener('click', function(){
+    try{
+        localStorage.setItem('myInput', input1Data.value);
+    } catch {
+        return;
+    }
+});
+//object
+const inputName = document.querySelector('input');
+const getplayer1 = localStorage.setItem('player1', JSON.stringify(player1.name));
+console.log(getplayer1);
+inputName.addEventListener('click', ()=>{
+    try{
+        JSON.parse(localStorage.getItem('player1'));
+        console.log(player1.name);
+    } catch {
+        return;
+    }
+});
+//restart
+const newGame = document.getElementById('newGame');
+newGame.addEventListener('click', function populateStorage() {
+    clickAudio.play();
+    localStorage.setItem('isStart', 'true');
+    localStorage.clear();
+    document.location.reload(false);
+});
+
+document.body.addEventListener("keydown", (event) => {
+    if (event.keyCode === 13) {
+        clickAudio.play();
+        startthegame.classList.add('hidden');
+        startthegamebtn.classList.add('hidden');
+        localStorage.setItem('isStart', 'true');
+        player1.name = document.getElementById('input1').value || player1.name;
+        player2.name = document.getElementById('input2').value || player2.name;
+        playerToMove = player1;
+    }
+})  ;
+
+if(isStart === 'true'){
+    startthegame.classList.add('hidden');
+    startthegamebtn.classList.add('hidden');
+} else if (!document.getElementById('input1').value && !document.getElementById('input2').value) {
+    document.getElementById('input1').value = player1.name;
+    document.getElementById('input2').value = player2.name;
+}
+
 // 1. DEFINE GLOBAL VARIABLES
 let holesElements = Array.from(document.querySelectorAll('.hole'));
 let columnElements = Array.from(document.querySelectorAll('.column'));
@@ -21,22 +122,21 @@ let holes = [
     0, 0, 0, 0, 0, 0,  // sixth column
     0, 0, 0, 0, 0, 0,  // seventh column
 ];
-let playerToMove = 1; //... more global variables
+
+let playerToMove = player1; //... more global variables
 let numOfColumns = 7;
 let numOfRows = 6;
 // let gameResult;
 let filledIdx;
 
-// 2. CREATE MULTIPLE EVENT LISTENER
+// 
 for (let i=0; i < columns.length; i++){
     columns[i].addEventListener('click', () => {
-        //check if  the game has ended
-        ////columnElements[0]=>
-        // console.log('column ',i + 1);
+        clickAudio.play();
         const result = fillColumn(i);
         const successful = result.success;
         const filledIdx = result.filledIdx;
-        if (successful){//2. check if filling a column was successful and //if it was successful:
+        if (successful){
             const hasColumnWin = checkColumnWin(i);
             const hasRowWin = checkForRowWin(filledIdx);
             const hasDiagonalWin = checkForDiagonalWin();
@@ -49,10 +149,10 @@ for (let i=0; i < columns.length; i++){
             // }
             //check if game has ended and log winner or draw.
             //return { success: true; filledIdx: i};
-            if (playerToMove === 1){
-                playerToMove = 2;
-            }else if(playerToMove === 2){
-                playerToMove = 1;
+            if (playerToMove.index === player1.index){
+                playerToMove = player2;
+            } else if(playerToMove.index === player2.index){
+                playerToMove = player1;
             }
         }else{ //if it was not successful:
             return; //we do nothing
@@ -63,13 +163,14 @@ for (let i=0; i < columns.length; i++){
 }
 
 
+
 function fillColumn(columnIndex){
     const startIdx = columnIndex * numOfRows;
     const endIdx = startIdx + numOfRows; 
     for (let i=startIdx; i < endIdx; i++){
         if (holes[i] === 0){
-            holes[i] = playerToMove;
-            holesElements[i].classList.add('player' + playerToMove);
+            holes[i] = playerToMove.index;
+            holesElements[i].classList.add('player' + playerToMove.index);
             return { success: true, filledIdx: i};
         }
     } return { success: false};
@@ -90,10 +191,11 @@ function checkColumnWin(columnIdx){
             countChips++;
         }
         if (countChips === 4){
-            console.log('Player ', holes[i], ' win');
+            console.log('Player ', playerToMove.name , ' win');
             backdrop.classList.add('hidden');
             gameResult.classList.add('hidden');
-            gameresulttext.innerHTML = 'The winner is player number: ' + holes[i];
+            gameresulttext.innerHTML = 'The winner is: ' + playerToMove.name;
+            myAudio.play();
             return true;
             
         }       
@@ -116,10 +218,11 @@ function checkForRowWin(filledIdx){
             countChips++;
         }
         if (countChips === 4){ 
-            console.log('Player ', holes[i], 'win');
+            console.log('Player ', playerToMove.name, 'win');
             backdrop.classList.add('hidden');
             gameResult.classList.add('hidden');
-            gameresulttext.innerHTML = 'The winner is player number: ' + holes[i];
+            gameresulttext.innerHTML = 'The winner is: ' + playerToMove.name;
+            myAudio.play();
             return true;
         }       
     }
@@ -130,13 +233,14 @@ function checkForRowWin(filledIdx){
 function checkForDiagonalWin() {
     for (let i = 0; i < winIndices.length; i++) {
         const hasWin = winIndices[i].every(winIndex => {
-            return holes[winIndex] === playerToMove;
+            return holes[winIndex] === playerToMove.index;
         });
         if (hasWin === true){
-            console.log('Player ', holes[i], 'win');
+            // console.log('Player ', playerToMove.name, 'win');
             backdrop.classList.add('hidden');
             gameResult.classList.add('hidden');
-            gameresulttext.innerHTML = 'The winner is player number: ' + holes[i];
+            gameresulttext.innerHTML = 'The winner is: ' + playerToMove.name;
+            myAudio.play();
             return true;
         }
     }
@@ -145,9 +249,7 @@ function checkForDiagonalWin() {
 
 
 function checkForDraw(){
-    if (holes.includes(0)){// check for zero and return false if zero was found
-        console.log('not a draw');
-
+    if (holes.includes(0)){
         return false;
     }else{
         console.log('draw');
@@ -209,8 +311,3 @@ const winIndices = [
     [38, 33, 28, 23], // index 23
 ];
 
-
-// Later as well:
-//  - working with own created JS objects which hold multiple information in one variable
-//    example: let gameResult = { winner: 'player1', winningChips: [2,3,4,5] }
-//    access winner for example with: gameResult.winner
