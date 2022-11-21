@@ -41,7 +41,9 @@ startthegamebtn.addEventListener('click', ()=> {
     clickAudio.play();
     startthegame.classList.add('hidden');
     startthegamebtn.classList.add('hidden');
-    localStorage.setItem('isStart', 'true');
+    // localStorage.setItem('isStart', 'true');
+    localStorage.clear();
+    document.location.reload(false);
     player1.name = document.getElementById('input1').value || player1.name;
     player2.name = document.getElementById('input2').value || player2.name;
     playerToMove = player1;
@@ -56,7 +58,7 @@ if(isStart === 'true'){
 }
 
 //
-//names
+//names1
 const startBtn = document.getElementById('str');
 const input1Data = document.getElementById('input1');
 input1Data.value = localStorage.getItem("myInput");
@@ -68,6 +70,20 @@ startBtn.addEventListener('click', function(){
         return;
     }
 });
+
+// // //names2
+// const startBtn2 = document.getElementById('str');
+// const input2Data = document.getElementById('input2');
+// input1Data.value = localStorage.getItem("myInputT");
+
+// startBtn2.addEventListener('click', function(){
+//     try{
+//         localStorage.setItem('myInputT', input2Data.value);
+//     } catch {
+//         return;
+//     }
+// });
+
 //object
 const inputName = document.querySelector('input');
 const getplayer1 = localStorage.setItem('player1', JSON.stringify(player1.name));
@@ -80,6 +96,8 @@ inputName.addEventListener('click', ()=>{
         return;
     }
 });
+
+
 //restart
 const newGame = document.getElementById('newGame');
 newGame.addEventListener('click', function populateStorage() {
@@ -108,6 +126,17 @@ if(isStart === 'true'){
     document.getElementById('input1').value = player1.name;
     document.getElementById('input2').value = player2.name;
 }
+
+//
+// document.addEventListener('keydown', (event) => {
+//     if(event.keyCode === 49){
+//         for (let i=0; i < columns.length; i++){
+//             holes[i] = playerToMove.index;
+//             holesElements[i].classList.add('player' + playerToMove.index);
+//         }
+//     }
+// });
+
 
 // 1. DEFINE GLOBAL VARIABLES
 let holesElements = Array.from(document.querySelectorAll('.hole'));
