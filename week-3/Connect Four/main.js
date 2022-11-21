@@ -41,7 +41,7 @@ startthegamebtn.addEventListener('click', ()=> {
     clickAudio.play();
     startthegame.classList.add('hidden');
     startthegamebtn.classList.add('hidden');
-    // localStorage.setItem('isStart', 'true');
+    localStorage.setItem('isStart', 'true');
     localStorage.clear();
     document.location.reload(false);
     player1.name = document.getElementById('input1').value || player1.name;
