@@ -74,3 +74,6 @@ ticker2.addEventListener(('mouseenter'), () => {
 ticker2.addEventListener(('mouseleave'), () => {
     moveRight();
 });
+
+///
+
