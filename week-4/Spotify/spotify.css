@@ -1,0 +1,41 @@
+*{box-sizing: border-box; margin: 0; padding: 0;}
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: grey;
+}
+
+button{
+    width: 100px;
+    height: 30px;
+    background-color: aquamarine;
+    border-radius: 30px;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+#container1{
+    padding: 20px;
+    background: radial-gradient(circle, rgba(232, 255, 0, 1) 0%, rgba(255, 188, 0, 1) 52%, rgba(255, 106, 0, 1) 100%);
+}
+
+.result-item{
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.result-item>img{
+    border-radius: 50px;
+    width: 300px;
+    border: 5px solid black;
+}
+
+.result-item>p{
+    color: rgb(255, 255, 255);
+    font-size: 25px;
+    font-weight: bold;
+}

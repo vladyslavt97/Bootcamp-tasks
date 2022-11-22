@@ -69,9 +69,20 @@ startBtn.addEventListener('click', function(){
     } catch {
         return;
     }
+    const inputName = document.querySelector('input');
+    const getplayer1 = localStorage.setItem('player1', JSON.stringify(player1.name));
+    console.log(getplayer1);
+    inputName.addEventListener('click', ()=>{
+        try{
+            const returnedVal = JSON.parse(localStorage.getItem('player1'));
+            console.log(returnedVal);
+        } catch {
+            return;
+        }
+    });
 });
 
-// // //names2
+// // // //names2
 // const startBtn2 = document.getElementById('str');
 // const input2Data = document.getElementById('input2');
 // input1Data.value = localStorage.getItem("myInputT");
@@ -85,17 +96,6 @@ startBtn.addEventListener('click', function(){
 // });
 
 //object
-const inputName = document.querySelector('input');
-const getplayer1 = localStorage.setItem('player1', JSON.stringify(player1.name));
-console.log(getplayer1);
-inputName.addEventListener('click', ()=>{
-    try{
-        JSON.parse(localStorage.getItem('player1'));
-        console.log(player1.name);
-    } catch {
-        return;
-    }
-});
 
 
 //restart

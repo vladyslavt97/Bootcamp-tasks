@@ -20,7 +20,6 @@ input
 
     .on("keydown", function (e) {
         if (e.keyCode === 40) {
-            // console.log(e.keyCode);
             console.log(
                 "results.children().eq(index): ",
                 results
@@ -42,7 +41,6 @@ input
             let selectedCountry = results.children().eq(index).text();
             input.val(selectedCountry);
         } else if (e.keyCode === 38) {
-            // console.log(e.keyCode);
             console.log(
                 "results.children().eq(index): ",
                 results
@@ -64,9 +62,6 @@ input
             let selectedCountryreverse = results.children().eq(index).text();
             input.val(selectedCountryreverse);
         } else if (e.keyCode === 13) {
-            // console.log(e.keyCode);
-            // console.log(e.target);
-
             results.hide();
         }
     });
@@ -74,33 +69,22 @@ input
 results.on("click", function (e) {
     input.val(e.target.outerText);
     console.log(e.target.outerText);
-    // let selectedCountryreverse = results.children().eq().text();
-    // input.val(selectedCountryreverse);
 });
 
-// results.hover(function(){
-//     results.children().eq(0).css("background-color", "yellow");
-// }, function(){
-//     results.children().eq(0).css("background-color", "white");
-// });
-
-///
 function findResults(str) {
     const filteredCountries = arrayOfCountries.filter((country) => {
         let countryToLowerCase = country.toLowerCase();
-        let strToLowerCase = str.toLowerCase(); // gets a string
-        return countryToLowerCase.startsWith(strToLowerCase); // returns an array
+        let strToLowerCase = str.toLowerCase();
+        return countryToLowerCase.startsWith(strToLowerCase);
     });
     return filteredCountries.slice(0, 4);
 }
 
 function findAndShowResults(val) {
-    const foundResults = findResults(val); // gets the value from the input field
+    const foundResults = findResults(val); 
     if (val === 0) {
-        // if there is no value ->
-        results.hide(); //hides the results
+        results.hide(); 
     }
-    //findAndShowResults if empty array - show nothing after input
     if (val === []) {
         results.hide();
     }
@@ -115,13 +99,10 @@ function renderResults(filteredCountries) {
 function getResultsHtml(filteredCountries) {
     let htmlString = "";
     if (filteredCountries.length === 0) {
-        // if it's empty ->
-        return "No results"; //return 'No results'
+        return "No results";
     } else {
         for (let i = 0; i < filteredCountries.length; i++) {
-            // else return a string containing div tags for every result item
-            htmlString += "<div>" + filteredCountries[i] + "</div>"; //append HTML element to htmlString
-        }
-        return htmlString;
+            htmlString += "<div>" + filteredCountries[i] + "</div>";
+        } return htmlString;
     }
 }
