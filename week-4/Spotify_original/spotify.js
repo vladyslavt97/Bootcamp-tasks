@@ -4,10 +4,9 @@ const button = document.querySelector(".search-button");
 const resultContainer = document.querySelector(".results");
 let nextUrl = "";
 let htmlString = "";
-let makingRequest = false;
+// let makingRequest = false;
 
 button.addEventListener("click", () => {
-    makingRequest = false;
     $.ajax({
         url: "https://spicedify.herokuapp.com/spotify",
         data: {

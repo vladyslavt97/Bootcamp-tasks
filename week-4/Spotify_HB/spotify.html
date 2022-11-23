@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotify</title>
+<link rel="stylesheet" href="spotify.css">
+<script defer src="spotify.js"></script>
+<link rel="icon" href="data:;base64,iVBORwOKGO="/>
+<script defer src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <div id="container1">
+        <div>
+            <input class="search-input" type="text">
+            <select name="spotify" class="type">
+                <option value="">--Please choose an option--</option>
+                <option value="album">album</option>
+                <option value="artist">artist</option>
+            </select>
+            <button class="search-button">Search</button>
+        </div>
+    </div>
+<h1>Results</h1>
+<!-- We create the section where we want to insert our new HB Html. -->
+<section id="authors-section" class="info-section"></section>
+<!-- We generate/ Create our new Html -->
+<script id="authorsTemplate" type="text/x-handlebars-template">
+                <div class="card-container">
+                    {{#authors}}
+                        <div class="card">
+                            <div class="card-info">
+                                <h2>{{name}}</h2>
+                                <h3>{{born}} - {{died}}</h3>
+                                <p><b>Quote:</b> {{quote}}</p>
+                                <div class="quote-container">
+                                    <div>
+                                        <h3>Selected Writings</h3>
+                                        <!-- We loop through our wand key property -->
+                                        {{#selectedWritings}}
+                                        <p>{{this}}</p>
+                                        {{/selectedWritings}}
+                                    </div>
+                                </div>
+                                <img src={{photo}} />
+                            </div>
+                        </div>
+                    {{/authors}}
+                </div>
+            </script>
+    <div class="results">
+        
+    </div>
+</select>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+</html>
