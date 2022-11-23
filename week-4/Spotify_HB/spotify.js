@@ -16,11 +16,11 @@ Array.prototype.slice.call(templates).forEach(function (script) {
 const input = document.querySelector(".search-input");
 const select = document.querySelector(".type");
 const button = document.querySelector(".search-button");
-const resultContainer = document.querySelector(".results");
-let nextUrl = "";
-let htmlString = "";
-// let makingRequest = false;
+var artistsSection = document.getElementById("artists-section");
 
+// const resultContainer = document.querySelector(".results");
+let nextUrl = "";
+let itemsAdjusted;
 button.addEventListener("click", () => {
     $.ajax({
         url: "https://spicedify.herokuapp.com/spotify",
@@ -34,73 +34,19 @@ button.addEventListener("click", () => {
             nextUrl = results.next;
             console.log(data);
             console.log(items);
-            const itemsAdjusted = items.map((item) => {
+            itemsAdjusted = items.map((item) => {
                 return { name: item.name, imageUrl: item.images[0]?.url };
             });
-            renderHtml(itemsAdjusted, false);
-            //
+            
+            var artistsHtml = Handlebars.templates.artistsTemplate({itemsAdjusted});
+            artistsSection.innerHTML = artistsHtml;
+            console.log("Items: ",itemsAdjusted);
         },
         error: function (error) {
-            console.log(error); //log the error for now
+            console.log(error);
         },
     });
 });
-
-// const secondbutton = document.getElementById("secondbtn");
-// secondbutton.addEventListener("click", () => {
-//     $.ajax({
-//         url: nextUrl,
-//         success: function (data) {
-//             const results = data.artists || data.albums;
-//             const items = results.items;
-//             console.log(data);
-//             console.log(items);
-//             const itemsAdjusted = items.map((item) => {
-//                 return { name: item.name, imageUrl: item.images[0]?.url };
-//             });
-//             renderHtml(itemsAdjusted, true);
-//         },
-//         error: function (error) {
-//             console.log(error);
-//         },
-//     });
-// });
-
-function renderHtml(itemsAdjusted, shouldAppend) {
-    htmlString = "";
-    if (itemsAdjusted.length === 0) {
-        return "No results";
-    } else {    
-        for (let i = 0; i < itemsAdjusted.length; i++) {
-            if (itemsAdjusted[i].imageUrl) {
-                htmlString +=
-                    '<div class="result-item">' +
-                    "<p>" +
-                    itemsAdjusted[i].name +
-                    "</p>" +
-                    "<br>" +
-                    '<img src="' +
-                    itemsAdjusted[i].imageUrl +
-                    '">' +
-                    "</div>";
-            } else {
-                htmlString +=
-                    '<div class="result-item">' + "<p>" +
-                    itemsAdjusted[i].name +
-                    "</p>" +
-                    '<img id="spotify" src="./Spotify.png" alt="spotify" height="30">' +
-                    "</div>";
-            }
-        }
-        if (shouldAppend === true) {
-            // do append something to innerHTML when shouldAppend is true;
-            resultContainer.innerHTML += htmlString;
-        } else {
-            // otherwise replace whole innerHTML
-            resultContainer.innerHTML = htmlString;
-        }
-    }
-}
 
 let timerID;
 document.addEventListener('scroll', () => {
@@ -109,7 +55,7 @@ document.addEventListener('scroll', () => {
     console.log('inner height: ', window.innerHeight);
     clearTimeout(timerID);
     timerID = setTimeout(()=>{
-        if (window.scrollY + window.innerHeight >= document.body.clientHeight){// calculation with scrollY, clientHeight and innerHeight
+        if (window.scrollY + window.innerHeight >= document.body.clientHeight){
             console.log('SCROLLEND');
             $.ajax({
                 url: nextUrl,
@@ -121,10 +67,13 @@ document.addEventListener('scroll', () => {
                         return;
                     }
                     const items = results.items;
-                    const itemsAdjusted = items.map((item) => {
+                    itemsAdjusted = items.map((item) => {
                         return { name: item.name, imageUrl: item.images[0]?.url };
                     });
-                    renderHtml(itemsAdjusted, true);
+                    var artistsHtml = Handlebars.templates.artistsTemplate({itemsAdjusted});
+                    artistsSection.innerHTML = artistsHtml;
+                    console.log("Items: ",itemsAdjusted);
+                    
                 },
                 error: function (error) {
                     console.log(error);
@@ -133,16 +82,3 @@ document.addEventListener('scroll', () => {
         }
     });
 });
-
-
-
-/* ------------------------------------------------------------------
-                Handlebars
---------------------------------------------------------------------- */
-//Here we are going to generate/create our new HTML.
-//The data that we pass has to be an Object
-var authorsHtml = Handlebars.templates.authorsTemplate({ authors });
-
-// We insert our new Html in the section that we want it.
-var authorsSection = document.getElementById("authors-section");
-authorsSection.innerHTML = authorsHtml;

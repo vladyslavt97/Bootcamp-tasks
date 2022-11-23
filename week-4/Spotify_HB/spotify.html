@@ -28,34 +28,21 @@
     </div>
 <h1>Results</h1>
 <!-- We create the section where we want to insert our new HB Html. -->
-<section id="authors-section" class="info-section"></section>
 <!-- We generate/ Create our new Html -->
-<script id="authorsTemplate" type="text/x-handlebars-template">
-                <div class="card-container">
-                    {{#authors}}
-                        <div class="card">
-                            <div class="card-info">
-                                <h2>{{name}}</h2>
-                                <h3>{{born}} - {{died}}</h3>
-                                <p><b>Quote:</b> {{quote}}</p>
-                                <div class="quote-container">
-                                    <div>
-                                        <h3>Selected Writings</h3>
-                                        <!-- We loop through our wand key property -->
-                                        {{#selectedWritings}}
-                                        <p>{{this}}</p>
-                                        {{/selectedWritings}}
-                                    </div>
-                                </div>
-                                <img src={{photo}} />
-                            </div>
-                        </div>
-                    {{/authors}}
-                </div>
-            </script>
+<section id="artists-section" class="info-section"></section>
+    <script id="artistsTemplate" type="text/x-handlebars-template">
     <div class="results">
-        
+        {{#itemsAdjusted}}
+        <div class="result-item">
+            <p>{{name}}</p>
+            <!--p itemsAdjusted[i].name -->
+            <img src={{imageUrl}} />
+            <!--img itemsAdjusted[i].imageUrl -->
+        </div>
+        {{/itemsAdjusted}}
     </div>
+    
+</script>
 </select>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>

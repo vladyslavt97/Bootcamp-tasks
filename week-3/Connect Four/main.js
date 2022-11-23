@@ -3,23 +3,15 @@ const backdrop = document.querySelector('.backdrop');
 const gameResult = document.querySelector('.gameresult');
 const restartBtn = document.querySelector('.restartbtn');
 const gameresulttext = document.querySelector('.gameresulttext');
-///
-
-
-
 //audio
 const myAudio = document.querySelector('#audio');
 const clickAudio = document.querySelector('#audioclick');
-
 //restart btn
 restartBtn.addEventListener('click', ()=> {
     clickAudio.play();
     document.location.reload(false);
 });
-
-
-///firststart window
-
+//firststart window
 const startthegame = document.querySelector('.startthegame');
 const startthegamebtn = document.querySelector('.startthegamebtn');
 
@@ -82,18 +74,6 @@ startBtn.addEventListener('click', function(){
     });
 });
 
-// // // //names2
-// const startBtn2 = document.getElementById('str');
-// const input2Data = document.getElementById('input2');
-// input1Data.value = localStorage.getItem("myInputT");
-
-// startBtn2.addEventListener('click', function(){
-//     try{
-//         localStorage.setItem('myInputT', input2Data.value);
-//     } catch {
-//         return;
-//     }
-// });
 
 //object
 
