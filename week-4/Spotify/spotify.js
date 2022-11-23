@@ -2,40 +2,28 @@ const input = document.querySelector(".search-input");
 const select = document.querySelector(".type");
 const button = document.querySelector(".search-button");
 const resultContainer = document.querySelector(".results");
-let nextUrl = '';
+let nextUrl = "";
 let htmlString = "";
+let makingRequest = false;
+
 button.addEventListener("click", () => {
+    makingRequest = false;
     $.ajax({
-        url: "https://spicedify.herokuapp.com/spotify", // from spiced /// lesson notes
+        url: "https://spicedify.herokuapp.com/spotify",
         data: {
-            q: input.value, //value of input field
-            type: select.value, //value of select
+            q: input.value,
+            type: select.value,
         },
         success: function (data) {
-            // searching  for Artist: data.albums DOES NOT exist;
-            // searching  for albums: data.artist DOES NOT exist;
             const results = data.artists || data.albums;
             const items = results.items;
             nextUrl = results.next;
             console.log(data);
-            console.log(items); //log data at first
+            console.log(items);
             const itemsAdjusted = items.map((item) => {
                 return { name: item.name, imageUrl: item.images[0]?.url };
             });
-            console.log("itemsAdjusted", itemsAdjusted);
-            htmlString = "";
-            if (itemsAdjusted.length === 0) {
-                return "No results";
-            } else {
-                for (let i = 0; i < itemsAdjusted.length; i++) {
-                    htmlString = '<div class="result-item">' + '<p>' + itemsAdjusted[i].name + '</p>' + '<img src="' + itemsAdjusted[i].imageUrl + '">' + '</div>';
-                    // <img src="" alt=""></img>
-                    // console.log(htmlString);
-                    resultContainer.innerHTML += htmlString;
-                }
-            } 
-            
-
+            renderHtml(itemsAdjusted, false);
             //
         },
         error: function (error) {
@@ -44,41 +32,90 @@ button.addEventListener("click", () => {
     });
 });
 
+// const secondbutton = document.getElementById("secondbtn");
+// secondbutton.addEventListener("click", () => {
+//     $.ajax({
+//         url: nextUrl,
+//         success: function (data) {
+//             const results = data.artists || data.albums;
+//             const items = results.items;
+//             console.log(data);
+//             console.log(items);
+//             const itemsAdjusted = items.map((item) => {
+//                 return { name: item.name, imageUrl: item.images[0]?.url };
+//             });
+//             renderHtml(itemsAdjusted, true);
+//         },
+//         error: function (error) {
+//             console.log(error);
+//         },
+//     });
+// });
 
-
-const secondbutton = document.getElementById('secondbtn');
-secondbutton.addEventListener('click', ()=> {// additional 
-    $.ajax({
-        url: 'https://spicedify.herokuapp.com/spotify?query=jackson&type=artist&offset=20&limit=20',
-        success: function (data) {
-            const results = data.artists || data.albums;
-            const items = results.items;
-            console.log(data);
-            console.log(items); //log data at first
-            const itemsAdjusted = items.map((item) => {
-                return { name: item.name, imageUrl: item.images[0]?.url };
-            });
-            console.log("itemsAdjusted", itemsAdjusted);
-            // htmlString = "";
-            if (itemsAdjusted.length === 0) {
-                return "No results";
+function renderHtml(itemsAdjusted, shouldAppend) {
+    htmlString = "";
+    if (itemsAdjusted.length === 0) {
+        return "No results";
+    } else {    
+        for (let i = 0; i < itemsAdjusted.length; i++) {
+            if (itemsAdjusted[i].imageUrl) {
+                htmlString +=
+                    '<div class="result-item">' +
+                    "<p>" +
+                    itemsAdjusted[i].name +
+                    "</p>" +
+                    "<br>" +
+                    '<img src="' +
+                    itemsAdjusted[i].imageUrl +
+                    '">' +
+                    "</div>";
             } else {
-                for (let i = 0; i < itemsAdjusted.length; i++) {
-                    htmlString = '<div class="result-item">' + '<p>' + itemsAdjusted[i].name + '</p>' + '<img src="' + itemsAdjusted[i].imageUrl + '">' + '</div>';
-                    // <img src="" alt=""></img>
-                    console.log(htmlString);
-                    resultContainer.innerHTML += htmlString;
-                }
-            } 
-            
+                htmlString +=
+                    '<div class="result-item">' + "<p>" +
+                    itemsAdjusted[i].name +
+                    "</p>" +
+                    '<img id="spotify" src="./Spotify.png" alt="spotify" height="30">' +
+                    "</div>";
+            }
+        }
+        if (shouldAppend === true) {
+            // do append something to innerHTML when shouldAppend is true;
+            resultContainer.innerHTML += htmlString;
+        } else {
+            // otherwise replace whole innerHTML
+            resultContainer.innerHTML = htmlString;
+        }
+    }
+}
 
-            //
-        },
-        error: function (error) {
-            console.log(error); //log the error for now
-        },
+let timerID;
+document.addEventListener('scroll', () => {
+    console.log('scrollY: ', window.scrollY);
+    console.log('clientHeight: ', document.body.clientHeight);
+    console.log('inner height: ', window.innerHeight);
+    clearTimeout(timerID);
+    timerID = setTimeout(()=>{
+        if (window.scrollY + window.innerHeight >= document.body.clientHeight){// calculation with scrollY, clientHeight and innerHeight
+            console.log('SCROLLEND');
+            $.ajax({
+                url: nextUrl,
+                success: function (data) {
+                    const results = data.artists || data.albums;
+                    results.nextUrl;
+                    nextUrl = results.next;
+                    if(nextUrl === null){
+                        return;
+                    }
+                    const items = results.items;
+                    const itemsAdjusted = items.map((item) => {
+                        return { name: item.name, imageUrl: item.images[0]?.url };
+                    });
+                    renderHtml(itemsAdjusted, true);
+                },
+                error: function (error) {
+                    console.log(error);
+                },
+            }, 2000);        
+        }
     });
-
 });
-
-    
