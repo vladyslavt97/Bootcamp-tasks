@@ -6,25 +6,24 @@ const gameresulttext = document.querySelector('.gameresulttext');
 //audio
 const myAudio = document.querySelector('#audio');
 const clickAudio = document.querySelector('#audioclick');
-//restart btn
-restartBtn.addEventListener('click', ()=> {
-    clickAudio.play();
-    document.location.reload(false);
-});
-//firststart window
-const startthegame = document.querySelector('.startthegame');
-const startthegamebtn = document.querySelector('.startthegamebtn');
-
-let player1 = {
+const player1 = {
     index: 1,
     name: ''
 };
+if (player1.name !== ''){
+    JSON.parse(localStorage.getItem('player1'));
+}
 
 let player2 = {
     index: 2,
     name: ''
 };
+
+
 //----------------------------------------------------------------------
+//firststart window
+const startthegame = document.querySelector('.startthegame');
+const startthegamebtn = document.querySelector('.startthegamebtn');
 //localStorage startpage
 const isStart = localStorage.getItem('isStart');
 
@@ -48,46 +47,34 @@ if(isStart === 'true'){
 
 //names1
 const startBtn = document.getElementById('str');
-// const input1Data = document.getElementById('input1');
-// input1Data.value = localStorage.getItem("myInput");
 
 startBtn.addEventListener('click', function(){
-    // try{
-    //     localStorage.setItem('myInput', input1Data.value);
-    // } catch {
-    //     return;
-    // }
-    //object
     const inputName = document.querySelector('input');
-    const getplayer1 = localStorage.setItem('player1', JSON.stringify(player1.name));
-    console.log(getplayer1);
+    localStorage.setItem('player1', JSON.stringify(player1.name));
     inputName.addEventListener('click', ()=>{
         try{
-            const returnedVal = JSON.parse(localStorage.getItem('player1'));
-            console.log(returnedVal);
+            JSON.parse(localStorage.getItem('player1'));
         } catch {
             return;
         }
     });
 });
 
-//restart
-const newGame = document.getElementById('newGame');
-newGame.addEventListener('click', function populateStorage() {
+//restart btn
+restartBtn.addEventListener('click', ()=> {
     clickAudio.play();
-    localStorage.setItem('isStart', 'true');
-    localStorage.clear();
     document.location.reload(false);
 });
 
 
-if(isStart === 'true'){
-    startthegame.classList.add('hidden');
-    startthegamebtn.classList.add('hidden');
-} else if (!document.getElementById('input1').value && !document.getElementById('input2').value) {
-    document.getElementById('input1').value = player1.name;
-    document.getElementById('input2').value = player2.name;
-}
+
+//New Game
+const newGame = document.getElementById('newGame');
+newGame.addEventListener('click', function populateStorage() {
+    clickAudio.play();
+    localStorage.clear();
+    document.location.reload(false);
+});
 
 //-------------------------------------------------------------------
 
