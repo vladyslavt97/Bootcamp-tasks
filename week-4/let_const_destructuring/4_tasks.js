@@ -30,9 +30,6 @@ console.log(concatenatedArray(array2, array3));
 //3rd task
 function logInfo(city) {
     const {name, country, population: numPeople} = city;
-    // const name = city.name;
-    // const country = city.country;
-    // const numPeople = city.population;
 
     console.log(
         `${name} is in ${country} and has ${numPeople} inhabitants in it.`
@@ -46,14 +43,14 @@ logInfo({ name: "Marseille", country: "France", population: 861635 });
 
 // let getNameAndCountry = ({name, country}) => [name, country];
 
-function getNameAndCountry() {
-    const myObj = {
-        name: 'T',
-        country: 'P'
-    }
-    return myArr = [myObj.name, myObj.country];
-}
-console.log(getNameAndCountry());
+// function getNameAndCountry() {
+//     const myObj = {
+//         name: 'T',
+//         country: 'P'
+//     }
+//     return myArr = [myObj.name, myObj.country];
+// }
+// console.log(getNameAndCountry());
 
 
 // let getRelocatedCity = (city1, city2={country: 'Germany'}) => {
@@ -64,11 +61,24 @@ console.log(getNameAndCountry());
 //     };
 // };
 
-function getRelocatedCity(city1, function getNameAndCountry(city2){
-    let city1 = {},
-    let city2 = {
-        country: 'Germany'
-    };
-    return city1 + city2;
-})
-getRelocatedCity();
+// function getRelocatedCity(city1, function getNameAndCountry(city2){
+//     let city1 = {},
+//     let city2 = {
+//         country: 'Germany'
+//     };
+//     return city1 + city2;
+// });
+// getRelocatedCity();
+
+
+// let getNameAndCountry = ({name, country}) => [name, country];
+
+// let getRelocatedCity = (city1, city2={country: 'Germany'}) => {
+//     let [, country] = getNameAndCountry(city2);
+//     return {
+//         ...city1,
+//         country
+//     };
+// };
+
+// console.log(getRelocatedCity("Triest", "Property"));

@@ -8,15 +8,12 @@ const myAudio = document.querySelector('#audio');
 const clickAudio = document.querySelector('#audioclick');
 const player1 = {
     index: 1,
-    name: ''
+    name: localStorage.getItem('player1') || ''
 };
-if (player1.name !== ''){
-    JSON.parse(localStorage.getItem('player1'));
-}
 
 let player2 = {
     index: 2,
-    name: ''
+    name: localStorage.getItem('player1') || ''
 };
 
 
@@ -50,7 +47,7 @@ const startBtn = document.getElementById('str');
 
 startBtn.addEventListener('click', function(){
     const inputName = document.querySelector('input');
-    localStorage.setItem('player1', JSON.stringify(player1.name));
+    localStorage.setItem('player1', player1.name);
     inputName.addEventListener('click', ()=>{
         try{
             JSON.parse(localStorage.getItem('player1'));
@@ -59,9 +56,24 @@ startBtn.addEventListener('click', function(){
         }
     });
 });
+//names2
+const startBtn2 = document.getElementById('str');
+
+startBtn2.addEventListener('click', function(){
+    const inputName = document.querySelector('input');
+    localStorage.setItem('player2', player2.name);
+    inputName.addEventListener('click', ()=>{
+        try{
+            JSON.parse(localStorage.getItem('player2'));
+        } catch {
+            return;
+        }
+    });
+});
 
 //restart btn
 restartBtn.addEventListener('click', ()=> {
+    console.log('player 1 before restart; ', player1);
     clickAudio.play();
     document.location.reload(false);
 });
