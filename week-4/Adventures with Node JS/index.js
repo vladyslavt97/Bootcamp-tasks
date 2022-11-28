@@ -2,23 +2,16 @@ const chalk = require("chalk");
 
 // console.log(chalk.red("Hello world!"));
 const readline = require("readline");
-// we need to create the command line interface
-const rl = readline.createInterface({
+
+const rl = readline.createInterface({ // we need to create the command line interface
     input: process.stdin,
     output: process.stdout,
 });
 
-// try out the interface
-// rl.question("how are you?", function (answer) {
+// rl.question("how are you?", function (answer) { // try out the interface
 //     console.log("this is your answer: ", answer);
 // });
-// function changeColor(colorVar){
-//     if (colorVar === 'blue'){
-//         chalk.blue(story);
-//     } else if (colorVar === 'green') {
-//         chalk.green(story);
-//     }
-// }
+
 let color;
 rl.question('choose a color? [green|blue] ', (answer) => {
     color = answer;
@@ -34,7 +27,7 @@ const story = {
                 left: {
                     q: "There's a scary wizard! He asks you a tough question. What's 1+1? [2|3] ",
                     answers: {
-                        2: "congratulations!",
+                        2: "Follow the link to play Connect Four: https://creative-cassata-94919c.netlify.app/ :)",
                     },
                 },
                 right: "This was not the right choice. Goodbye! ",
@@ -43,9 +36,7 @@ const story = {
         no: "Alright then. Enjoy your day!",
     },
 };
-
-// get the first answer and question
-let currentQuestion = story.q;
+let currentQuestion = story.q; // get the first answer and question
 let currentAnswers = story.answers;
 
 function askQuestion(question, answers) {
@@ -58,7 +49,6 @@ function askQuestion(question, answers) {
     rl.question(question, function (input) {
         if (!answers[input]) {
             askQuestion(question, answers);
-            // rl.close();
             return;
         }
         if (input === "2") {
@@ -76,9 +66,7 @@ function askQuestion(question, answers) {
             rl.close();
             return;
         }
-        // here we call the same function again with a new question and
-        // new answers
-        currentQuestion = answers[input].q;
+        currentQuestion = answers[input].q; // here we call the same function again with a new question and new answers
         currentAnswers = answers[input].answers;
         askQuestion(currentQuestion, currentAnswers);
 
