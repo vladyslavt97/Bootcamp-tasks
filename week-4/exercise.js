@@ -1,9 +1,8 @@
-//Task 1
 const url = require('url');
 const querystring = require('querystring');
 
-const arguments = process.argv;
-const lastArg = arguments[arguments.length - 1]
+const argumentsOf = process.argv;
+const lastArg = argumentsOf[argumentsOf.length - 1];
 console.log(lastArg);
 //with help of url.parse() and querystring.parse();
 
@@ -25,18 +24,3 @@ console.log("hostname ", someUrl.hostname);
 console.log("port ", someUrl.port);
 console.log("query ", someUrl.query);
 console.log("pathname ", someUrl.pathname);
-
-
-
-
-//Task 2
-const { EventEmitter } = require("events");
-const eventEmitter = new EventEmitter();
-
-eventEmitter.on("coding", () => {
-    console.log("my code");
-});
-
-eventEmitter.emit("coding");
-
-//
