@@ -1,5 +1,7 @@
+const chalk = require('chalk');
 const fs = require('fs');
 const path = require('path');
+
 function logSizes(fullPath){
     const files = fs.readdirSync(fullPath, { withFileTypes: true});
     // console.log('my flies: ', files);
@@ -10,7 +12,7 @@ function logSizes(fullPath){
                 if (err) {
                     console.log("Error in stat");
                 }
-                console.log('path: ', filePath, "File size is ", stats.size);
+                console.log(chalk.bold.red('path: '), chalk.italic.bgWhite.green(filePath), chalk.blue("File size is "), stats.size);
             });
         } 
         if (entity.isDirectory()){
@@ -46,3 +48,5 @@ function mapSizes(fullPath){
     return myObj;
 }
 console.log(mapSizes(path.join(__dirname, 'files')));
+
+
