@@ -37,7 +37,7 @@ const server = http.createServer((request, response) => {
             response.statusCode = 405;
             response.end();
         }
-        const data = `${request.method} \n ${request.url} \n ${new Date} \n \n`;
+        const data = `${request.method}, ${request.url}, ${new Date}, ${request.headers["user-agent"]}\n`;
         fs.appendFile("requests.txt", data, function (err) {
             if (err) throw err;
             console.log('Saved!');
