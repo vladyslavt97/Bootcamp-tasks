@@ -16,12 +16,10 @@ const server = http.createServer((request, response) => {
             response.setHeader("content-type", "text/html");
             response.statusCode = 200;
             if (request.method === "HEAD") {
+                console.log('HEAD');
                 response.end(`<h1>End Method</h1>`);
+
             } else if (request.method === "GET") {
-    
-                response.setHeader("content-type", "text/html");
-                response.statusCode = 200;
-    
                 response.end(`<!doctype html>
                                 <html>
                                 <title>Hello World!</title>
@@ -41,6 +39,16 @@ const server = http.createServer((request, response) => {
         fs.appendFile("requests.txt", data, function (err) {
             if (err) throw err;
             console.log('Saved!');
+        });
+        // fs.readFile("requests.txt", 'utf8', (err, data) => {
+        //     console.log(data);
+        // });
+        var readStream = fs.createReadStream("requests.txt", 'utf8');
+        readStream.on('data', (data)=>{
+            console.log('data', data);
+        });
+        readStream.on('end', ()=>{
+            console.log('end');
         });
     }
 });
