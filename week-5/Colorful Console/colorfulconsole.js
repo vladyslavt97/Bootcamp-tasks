@@ -46,7 +46,7 @@ const server = http.createServer((req, res)=>{
 
             const params = new URLSearchParams(body);
             // console.log(chalk.red(params));
-            console.log(chalk.keyword(params.get('color'))(params));
+            console.log(chalk[params.get('color')](params.get("text")));
             res.setHeader("content-type", "text/html");
             res.statusCode = 200;
             res.write(`<!doctype html>
