@@ -1,7 +1,8 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path"); // use path.join() for concatenating paths
-
+const generateProjects = require('./generate-projects');
+//require function in Server.js
 const contentTypes = {
     ".html": "text/html",
     ".css": "text/css",
@@ -28,8 +29,10 @@ const server = http.createServer((req, res) => {
         res.end();
         return;
     }
-    if (req.url === '/'){ // 2. Check if req.url is '/'. If it is. 
-        res.end('Make hompage'); //Do nothing FOR NOW. We will implement later for part 2
+    if (req.url === '/'){ 
+        const finalHtml = generateProjects();
+        res.setHeader('content-type', 'text/html');
+        res.end(finalHtml);
     }
     
     // 3. Check if req.url is NOT '/'. If it is not '/' then do additional logic
@@ -41,7 +44,7 @@ const server = http.createServer((req, res) => {
             if (fs.statSync(pathToCheck).isFile()){
                 const fileContent = fs.readFileSync(pathToCheck);
                 const ext = path.extname(pathToCheck);
-                res.setHeader('content-type', contentTypes[ext]);
+                res.setHeader('content-type', contentTypes[ext]);//TODO
                 res.end(fileContent);
             } else {// else (then it is a directory)
                 if (req.url.endsWith("/")){
