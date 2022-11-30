@@ -43,12 +43,16 @@ const server = http.createServer((request, response) => {
         // fs.readFile("requests.txt", 'utf8', (err, data) => {
         //     console.log(data);
         // });
+        let body = '';
         var readStream = fs.createReadStream("requests.txt", 'utf8');
-        readStream.on('data', (data)=>{
-            console.log('data', data);
+        readStream.on('data', (chunk)=>{
+            console.log('data', chunk);
+            body += chunk;
+            response.end();
         });
         readStream.on('end', ()=>{
-            console.log('end');
+            console.log('end with body', body);
+            response.end();
         });
     }
 });
@@ -56,5 +60,3 @@ const server = http.createServer((request, response) => {
 server.listen(PORT, () =>
     console.log(`Server listening at http://localhost:${PORT}`)
 );
-
-

@@ -1,0 +1,84 @@
+*{box-sizing: border-box; margin: 0; padding: 0;}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    opacity: 0.8;
+        background-image: radial-gradient(circle at 0 0, transparent 0, #7cf8db 10px), repeating-linear-gradient(#00ff9a55, #00ff9a);
+    overflow-x: hidden;
+}
+
+
+button{
+    width: 100px;
+    height: 30px;
+    background-color: aquamarine;
+    border-radius: 30px;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+#container1{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: rgb(97, 159, 150);
+        background: linear-gradient(-90deg, rgba(97, 159, 150, 1) 0%, rgba(59, 0, 84, 1) 100%);
+    box-shadow: 5px 5px 50px 5px rgb(255, 255, 255);
+}
+
+
+.result-item{
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+}
+
+.result-item>img{
+    border-radius: 50px;
+    width: 100px;
+    border: 5px solid black;
+}
+
+.result-item>p{
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 50px;
+    padding: 10px;
+}
+
+
+.results{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    background: rgb(0, 255, 218);
+        background: radial-gradient(circle, rgba(0, 255, 218, 1) 0%, rgba(231, 0, 255, 1) 52%, rgba(0, 52, 255, 1) 100%);
+    margin: 20px;
+    border-radius: 50px;
+    border: 3px dotted black;
+}
+
+.results>div{
+    display: grid;
+    background: rgb(97, 159, 150);
+        background: radial-gradient(circle, rgba(97, 159, 150, 1) 0%, rgb(1, 117, 30) 52%, rgb(8, 36, 12) 100%);
+    border-radius: 60px;
+    border: 2px dotted rgb(255, 157, 0);
+    margin: 20px;
+}
+#spotify{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    display: grid;
+    filter: contrast(50%);
+    justify-content: flex-end;
+}
