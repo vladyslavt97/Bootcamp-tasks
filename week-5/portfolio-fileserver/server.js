@@ -44,7 +44,7 @@ const server = http.createServer((req, res) => {
             if (fs.statSync(pathToCheck).isFile()){
                 const fileContent = fs.readFileSync(pathToCheck);
                 const ext = path.extname(pathToCheck);
-                res.setHeader('content-type', contentTypes[ext]);//TODO
+                res.setHeader('content-type', contentTypes[ext]);
                 res.end(fileContent);
             } else {// else (then it is a directory)
                 if (req.url.endsWith("/")){
