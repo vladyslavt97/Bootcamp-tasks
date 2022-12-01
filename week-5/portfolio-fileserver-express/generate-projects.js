@@ -12,7 +12,7 @@ module.exports = function generateProjects() {
             html += `<li> <a href="./${projects[i]}"> ${projects[i]} </a> <br> </li>`;
         }
     }
-    return `<title>Portfolio</title> <link rel="icon" href="/1_helper-things/favicon.ico" type="image/x-icon"> <h1> MY PROJECTS </h1> <div><ol>` + html + `</ol></div> <style> 
+    return `<title>Portfolio</title> <link rel="icon" href="/cookies/favicon.ico" type="image/x-icon"> <h1> MY PROJECTS </h1> <div><ol>` + html + `</ol></div> <style> 
         body {
             background: rgb(97,159,150);
             background: linear-gradient(-90deg, rgba(97,159,150,1) 0%, rgba(115,115,115,1) 100%);
