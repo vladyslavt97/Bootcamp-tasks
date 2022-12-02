@@ -9,13 +9,16 @@ body{
     min-height: 100vh;
     flex-direction: column;
     overflow: hidden;
+    font-family: 'Oswald', sans-serif;
+        font-family: 'Poppins', sans-serif;
+        font-family: 'Ubuntu', sans-serif;
 }
 main{
     flex-grow: 1;
 }
 
 footer{
-    background-color: aquamarine;
+    background-color: rgb(1, 106, 71);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,11 +35,11 @@ h1{
 }
 
 img{
-    width: 150px;
-    height: 150px
+    width: 230px;
+    height: 230px
 }
 
-div{
+.first-div{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     /* grid-template-rows: 10% 1fr 10%; */
@@ -45,14 +48,23 @@ div{
     justify-items: center;
 }
 
-#eachDiv{
+.eachDiv{
     background-color: beige;
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
-    width: 300px;
+    border-radius: 15px;
+    width: 230px;
+    height: 260px;
     transition: transform 1s ease;
-    margin-top: 75px;
 }
-#eachDiv:hover {
+.eachDiv>a{
+    display: flex;
+    justify-content: center;
+    color: orange;
+    text-decoration: none;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}
+
+.eachDiv:hover {
     -ms-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
@@ -60,4 +72,8 @@ div{
 
 div:nth-child(7){
     grid-column: 2 / 3;
+}
+
+img{
+    border-radius: 15px;
 }
