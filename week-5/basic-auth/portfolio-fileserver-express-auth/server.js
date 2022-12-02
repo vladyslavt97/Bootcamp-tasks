@@ -4,6 +4,7 @@ const app = express();
 const generateProjects = require("./generate-projects");
 const cookieParser = require('cookie-parser');
 const {auth} = require('./index');
+
 let userReq = '';
 app.use((req, res, next) => {
     if (req.url.includes('favicon.ico')) {
@@ -13,29 +14,13 @@ app.use((req, res, next) => {
     }
 });
 
-// const basicAuth = require("basic-auth");
-
-// const auth = function (req, res, next) {
-//     const creds = basicAuth(req);
-//     if (!creds || creds.name != "54321" || creds.pass != "12345") {
-//         res.setHeader(
-//             "WWW-Authenticate",
-//             'Basic realm="Enter your credentials to see the canvas game:"'
-//         );
-//         res.sendStatus(401);
-//     } else {
-//         next();
-//     }
-// };
-
-
 app.use(cookieParser());
 
 app.use((req, res, next) => {
     if (req.url.startsWith("/cookies")) {
         if(req.cookies.accepted === 'on'){
             console.log("With cookies");
-            if (req.url.startsWith('/cookies')){ //+
+            if (req.url.startsWith('/cookies')){
                 console.log('should get redirected to home');
                 res.redirect('/home');
             }else {
