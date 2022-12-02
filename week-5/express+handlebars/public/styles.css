@@ -18,7 +18,8 @@ main{
 }
 
 footer{
-    background-color: rgb(1, 106, 71);
+    background: rgb(254, 255, 0);
+    background: linear-gradient(289deg, rgba(254, 255, 0, 1) 0%, rgba(142, 0, 0, 1) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +32,10 @@ h1{
     display: flex;
     justify-content: center;
     font-size: 55px;
-    color: white;
+    /* color: white; */
+    background: -webkit-linear-gradient(90deg, rgb(3, 114, 8), rgb(240, 240, 240));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 img{
