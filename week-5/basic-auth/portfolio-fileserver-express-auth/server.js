@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 const generateProjects = require("./generate-projects");
 const cookieParser = require('cookie-parser');
-
+const {auth} = require('./index');
 let userReq = '';
 app.use((req, res, next) => {
     if (req.url.includes('favicon.ico')) {
@@ -12,6 +12,22 @@ app.use((req, res, next) => {
         next();
     }
 });
+
+// const basicAuth = require("basic-auth");
+
+// const auth = function (req, res, next) {
+//     const creds = basicAuth(req);
+//     if (!creds || creds.name != "54321" || creds.pass != "12345") {
+//         res.setHeader(
+//             "WWW-Authenticate",
+//             'Basic realm="Enter your credentials to see the canvas game:"'
+//         );
+//         res.sendStatus(401);
+//     } else {
+//         next();
+//     }
+// };
+
 
 app.use(cookieParser());
 
@@ -37,6 +53,7 @@ app.use((req, res, next) => {
     } 
 });
 
+app.use('/canvas', auth);
 
 // middleware to serve static files from a specific folder
 const staticMiddleware = express.static(path.join(__dirname, 'projects'));
@@ -76,3 +93,5 @@ app.post('/cookies', (req, res) => {
 app.listen(8080, () => {
     console.log('express server is running on localhost:8080...');
 });
+
+
