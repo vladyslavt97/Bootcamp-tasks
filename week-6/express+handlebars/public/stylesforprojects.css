@@ -66,9 +66,14 @@ nav a {
     transition: background-color 0.3s, color 0.3s;
 }
 
-nav a:hover,
-nav a.active {
+nav a:hover{
     background: #245990;
+    color: #fff;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+nav a.active {
+    background: #247c90;
     color: #fff;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 }

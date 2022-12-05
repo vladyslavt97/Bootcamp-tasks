@@ -41,21 +41,21 @@ app.get('/projects/:projectDirectory', (req, res) => {
         res.status(404).send("Wrong request"); //      if it is undefined. set statuscode 404 and send response.
     }
 
-    res.render('nav-description', {
+    res.render('show-lists', {
         layout: "main",
         projects: projects,
         showImage: false,
         selectedProject: selectedProject,
         helpers: {
             getStylesHelper: "/stylesforprojects.css",
-            
+            toUpperCase(text) {
+                return text.toUpperCase();
+            },
             getActiveClass: (url) => {
-                console.log(selectedProject);
+                // console.log(selectedProject);
                 if(selectedProject.url === url){
-                    return class = "active";
-                } else {
-                    return;
-                }    
+                    return 'active';
+                }  
             }
         }
     });

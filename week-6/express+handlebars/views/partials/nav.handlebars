@@ -1,29 +1,5 @@
-{{!-- TASK for later: move projects loop into own partials handlebars file --}}
-{{!-- showImage variable was provided next to projects variable --}}
-{{!-- {{#if showImage}}
 {{#projects}}
-<img src="{{url}}/screenshot.jpg">
-<a href="{{url}}">{{name}}</a>
+<nav class="links">
+    <li><a href="{{url}}" class="{{getActiveClass url}}" >{{name}}</a></li>
+</nav>
 {{/projects}}
-{{else}}
-{{#projects}}
-<a href="{{url}}">{{name}}</a>
-{{/projects}}
-{{/if}} --}}
-
-{{!-- You can get out of the projects context with ../ and then access the showImage variable
-{{#projects}}
-{{#if ../showImage}}
-<img src="{{directory}}/screenshot.png">
-{{/if}}
-<a href="project/{{directory}}">{{title}}</a>
-{{/projects}}
-
-{{!-- TASK for later: move selectedProject info into own partials handlebars file --}}
-{{#selectedProject}}
-<p>Show specific information about selected project: {{title}}</p>
-{{!-- show title --}}
-{{!-- show image --}}
-{{!-- show description --}}
-{{!-- show link --}}
-{{/selectedProject}} --}}
