@@ -15,10 +15,11 @@ app.use(express.static("./projects"));
 const cohortName = "Mint";
 
 app.get("/", (req, res) => {
-    res.render("homePageTemplate", {
+    res.render("show-lists", {
         layout: "main",
         cohortName,
         projects,
+        showImage: true,
         helpers: {
             getStylesHelper: "/styles.css" 
         }
@@ -48,9 +49,6 @@ app.get('/projects/:projectDirectory', (req, res) => {
         selectedProject: selectedProject,
         helpers: {
             getStylesHelper: "/stylesforprojects.css",
-            toUpperCase(text) {
-                return text.toUpperCase();
-            },
             getActiveClass: (url) => {
                 // console.log(selectedProject);
                 if(selectedProject.url === url){

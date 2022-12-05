@@ -1,0 +1,16 @@
+{{#if showImage}}
+<a id="overview" href="/projects">Overview</a>
+{{#projects}}
+<div class="eachDiv">
+    <a href="{{url}}" target="_blank"><img src="/{{url}}/screenshot.png" /></a>
+    <a href="{{url}}">{{name}}</a>
+</div>
+{{/projects}}
+{{else}}
+<a id="mainpage" href="/">Main page</a>
+{{#projects}}
+<nav class="links">
+    <li><a href="{{url}}" class="{{getActiveClass url}}">{{name}}</a></li>
+</nav>
+{{/projects}}
+{{/if}}
