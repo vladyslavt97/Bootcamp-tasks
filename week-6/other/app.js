@@ -20,8 +20,8 @@ function cakes(recipe, available) {
         }
         // console.log(longNum);
         const arrStr = longNum.split('');
-        const minN = Math.min(...arrStr);
-        // console.log('minNum', minN);
+        const minN = Math.min(longNum);
+        console.log('minNum', minN);
         if (minN === 0){
             result = 0;
         } else {

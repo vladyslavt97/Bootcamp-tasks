@@ -1,0 +1,65 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+#ticker{
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    border-bottom: 3px double rgb(255, 176, 176);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    box-shadow: 0px 10px 80px #f585ff;
+    background: linear-gradient(140deg, #e66465, #9198e5);
+    white-space: nowrap;
+}
+
+#headlines{
+    position: absolute;
+    height: 80px;
+    width: 100%;
+    left: 1060px;
+}
+
+a{
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    text-decoration: none;
+    padding: 0 10px;
+}
+
+span{
+    font-weight: 400;
+}
+
+#ticker2 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    border-top: 3px double rgb(255, 176, 176);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    box-shadow: 0px 10px 80px #f585ff;
+    background: linear-gradient(140deg, #e66465, #9198e5);
+    white-space: nowrap;
+}
+
+#headlines2 {
+    position: absolute;
+    height: 80px;
+    width: 100%;
+    left: -5679px;
+    width: fit-content;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: red;
+}
