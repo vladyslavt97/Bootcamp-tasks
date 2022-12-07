@@ -52,7 +52,7 @@ ticker.addEventListener(('mouseleave'), () => {
 
 
 
-$.get("http://localhost:8080/ticker.json", function (data) {
+$.get("./ticker.json", function (data) {
     data.forEach((tickerElement) => {
         headlinesJ.append(
             '<a href="' +
