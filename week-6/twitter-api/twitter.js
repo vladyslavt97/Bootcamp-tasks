@@ -46,7 +46,7 @@ module.exports.getTweets = (token, callback) => {
     const req = https.request({
         method: 'GET',
         host: 'api.twitter.com',
-        path: `/1.1/statuses/user_timeline.json?count=5&screen_name=KyivPost&tweet_mode=extended`,
+        path: `/1.1/statuses/user_timeline.json?count=15&screen_name=KyivPost&tweet_mode=extended`,
         headers: {
             'Authorization': `Bearer ${token}`
         }
