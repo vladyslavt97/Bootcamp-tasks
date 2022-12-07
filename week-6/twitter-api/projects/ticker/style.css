@@ -11,7 +11,7 @@ body{
 #ticker{
     position: absolute;
     width: 100%;
-    height: 80px;
+    height: 60px;
     border-bottom: 3px double rgb(255, 176, 176);
     overflow-x: hidden;
     overflow-y: hidden;
@@ -41,4 +41,11 @@ span{
 a:hover{
     text-decoration: underline;
     color: red;
+}
+
+b{
+    color: white;
+    background-color: #37003c;
+    border-radius: 15px;
+    padding: 5px;
 }

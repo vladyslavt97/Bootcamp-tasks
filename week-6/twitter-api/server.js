@@ -6,40 +6,66 @@ const {getToken, getTweets} = require("./twitter");
 app.use(express.static("./projects"));
 
 app.get('/', (req, res) => {
-    res.redirect('/links.json');
+    res.redirect('/ticker/');
 });
 
 app.get('/links.json', (req, res) => {
-    getToken((error, token) => {
-        console.log('token in getToken: ', token);
-        if(error){
-            res.sendStatus(500);
-        }
-        getTweets(token, (error, tweets) => {
-            if (error){
-                res.sendStatus(500);
-
-            }
-            const filteredTweets = filterTweets(tweets);
-            console.log('filteredTweets: ', filteredTweets);
-
+    getToken()
+        .then(token => {
+            return Promise.all([
+                getTweets(token, 'nytimes'),
+                getTweets(token, 'washingtonpost'),
+                getTweets(token, 'kyivpost')
+            ]);
+        })
+        .then(tweets => {
+            const filteredTweets = filterTweets(tweets);    
             res.json(filteredTweets);
+        })
+        .catch(error => { 
+            console.log(error);
+            res.sendStatus(500);
         });
-    });
 });
 
+
+// app.get('/links.json', (req, res) => {
+//     getToken()
+//         .then(token => {
+//             return getTweets(token);
+//         })
+//         .then(tweets => {
+//             const filteredTweets = filterTweets(tweets);    
+//             res.json(filteredTweets);
+//         })
+//         .catch(error => { 
+//             res.sendStatus(500);
+//         }); 
+// });
+
 function filterTweets(tweets) {
-    const filteredTweets = tweets.filter(tweet => {
+    const flattenedTweets = tweets.flat();
+    const filteredTweets = flattenedTweets.filter(tweet => {
         console.log('filteredTweets; ', tweet.entities.urls.length);
-        return tweet.entities.urls.length === 1; //only if there is an url
+        return tweet.entities.urls.length === 1; 
         
     });
+    // flattenedTweets.sort((a, b) => {
+    //     if (a.created_at < b.created_at) {
+    //         return 1;
+    //     } else {
+    //         return -1;
+    //     }
+    // });
+    filteredTweets.sort((a, b) => (a.created_at < b.created_at ? 1 : -1)
+    );
+    console.log(filteredTweets.map(tweet => {
+        return tweet.created_at;
+    }));
 
     const newTweets = filteredTweets.map(tweet => {
-        //if (has only text){
-        //return { text: tweet.full_text.replaceAll('\n','').replace('. ', '.').split('https')[0] };
-        //}
-        return { text: tweet.full_text.replaceAll('\n','').replace('. ', '.').split('https')[0], url: tweet.entities.urls[0].url };
+        console.log(filteredTweets);
+        return {name: tweet.user.name, text: tweet.full_text.replaceAll('\n','').replace('. ', '.').split('https')[0], url: tweet.entities.urls[0].url };
     });
     return newTweets;
 }
