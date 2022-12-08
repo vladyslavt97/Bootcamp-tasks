@@ -43,9 +43,9 @@ a:hover{
     color: red;
 }
 
-b{
+em{
     color: white;
     background-color: #37003c;
     border-radius: 15px;
-    padding: 5px;
+    padding: 5px 5px;
 }

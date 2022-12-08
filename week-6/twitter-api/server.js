@@ -65,11 +65,11 @@ function filterTweets(tweets) {
 
     const newTweets = filteredTweets.map(tweet => {
         console.log(filteredTweets);
-        return {name: tweet.user.name, text: tweet.full_text.replaceAll('\n','').replace('. ', '.').split('https')[0], url: tweet.entities.urls[0].url };
+        return {text: `<em>(${tweet.user.name})</em> ${tweet.full_text.replaceAll('\n','').replace('.  ', '. ').split('https')[0]}`, url: tweet.entities.urls[0].url };
     });
     return newTweets;
 }
 
 app.listen(8080, () => {
-    console.log('Server running on localhost:8080...');
+    console.log('Server running on localhost: 8080...');
 });

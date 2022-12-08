@@ -41,6 +41,7 @@ ticker.on(('mouseleave'), () => {
 $.get("/links.json", function (data) {
     data.forEach((tickerElement) => {
         headlines.append(`
-        <a href="${tickerElement.url}"><b><em>${tickerElement.name}:</em></b> ${tickerElement.text}</a>`);
+        <a href="${tickerElement.url}"> ${tickerElement.text}</a>`);
+        // <a href="${tickerElement.url}"><b><em>${tickerElement.name}:</em></b> ${tickerElement.text}</a>`);
     });
 });
